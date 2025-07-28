@@ -14,4 +14,6 @@ public interface CharacterService {
     CharacterDTO findById(Long id);
 
     CharacterDTO updateStatusToDead(Long id);
+
+    CharacterDTO updateCharacter(Long id, CreateCharacterDTO updateCharacterDTO);
 }

@@ -41,4 +41,13 @@ public class CharacterController {
     public CharacterDTO updateCharacterStatus(@PathVariable Long id) {
         return characterService.updateStatusToDead(id);
     }
+
+    @PutMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
+    public CharacterDTO updateCharacter(
+            @PathVariable Long id,
+            @Valid @RequestBody CreateCharacterDTO updateCharacterDTO
+    ) {
+        return characterService.updateCharacter(id, updateCharacterDTO);
+    }
 }

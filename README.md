@@ -15,28 +15,11 @@ Crea un nuevo personaje.
 ### `GET /api/characters/{id}`
 Obtiene un personaje por su ID.
 
-**Ejemplo de respuesta:**
-```json
-{
-  "id": 1,
-  "name": "Walter White",
-  "occupation": "Profesor de Química",
-  "status": "Alive"
-}
-```
-
 ### `PATCH /api/characters/{id}/status`
 Cambia el estado de un personaje a "Dead".
 
-**Ejemplo de respuesta:**
-```json
-{
-  "id": 1,
-  "name": "Walter White",
-  "occupation": "Profesor de Química",
-  "status": "Dead"
-}
-```
+### `PUT /api/characters/{id}`
+Actualiza un personaje por su ID.
 
 **Añade el puerto `8080` a la URL de la API para probar los endpoints. Por ejemplo, si quieres probar el endpoint `GET /api/characters`, la URL completa sería `http://localhost:8080/api/characters`.*
 
@@ -107,11 +90,27 @@ Implementa un test de integración para el endpoint `GET /api/characters/{id}`. 
 | 9  | Gus Fring            | Empresario            | ALIVE  | https://example.com/gus-fring.jpg           |
 | 10 | Tuco Salamanca       | Distribuidor          | ALIVE  | https://example.com/tuco-salamanca.jpg      |
 
-Utiliza MockMVC para simular el comportamiento de la API y verificar que se puede obtener un personaje por su ID. Asegúrate de que el test verifica que el personaje devuelto tiene los campos correctos.
+Utiliza MockMVC para simular el comportamiento de la API y verificar que se puede obtener un personaje por su ID. 
+
+Asegúrate de que el test verifica como mínimo lo siguiente:
+- El endpoint devuelve un código de estado 200 (OK).
+- El cuerpo de la respuesta contiene los datos del personaje con el ID solicitado.
 
 ## Tarea 2: PATCH /api/characters/{id}/status
 Implementa un test de integración para el endpoint `PATCH /api/characters/{id}/status
-`. Este test debe verificar que se puede cambiar el estado de un personaje a "Dead". Utiliza MockMVC para simular el comportamiento de la API y verificar que el estado del personaje se actualiza correctamente.
+`. 
+
+Asegúrate de que el test verifica como mínimo lo siguiente:
+- El endpoint devuelve un código de estado 200 (OK).
+- El cuerpo de la respuesta contiene el personaje actualizado con el estado cambiado a "Dead".
+
+## Tarea 3: PUT /api/characters/{id}
+Implementa un test de integración para el endpoint `PUT /api/characters/{id}`.
+Este test debe verificar que se puede actualizar un personaje por su ID. 
+
+Asegúrate de que el test verifica como mínimo lo siguiente:
+- El endpoint devuelve un código de estado 200 (OK).
+- El cuerpo de la respuesta contiene el personaje actualizado con los nuevos datos.
 
 ## Ejecutar los tests
 

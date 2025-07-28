@@ -53,6 +53,19 @@ public class CharacterServiceImpl implements CharacterService {
         return convertToDTO(foundCharacter);
     }
 
+    public CharacterDTO updateCharacter(Long id, CreateCharacterDTO updateCharacterDTO) {
+        Character foundCharacter = characterRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Recurso no encontrado"));
+
+        foundCharacter.setName(updateCharacterDTO.getName());
+        foundCharacter.setOccupation(updateCharacterDTO.getOccupation());
+        foundCharacter.setStatus(updateCharacterDTO.getStatus());
+        foundCharacter.setImageUrl(updateCharacterDTO.getImageUrl());
+
+        characterRepository.save(foundCharacter);
+        return convertToDTO(foundCharacter);
+    }
+
     private CharacterDTO convertToDTO(Character character) {
         return new CharacterDTO(
                 character.getId(),
